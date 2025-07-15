@@ -1,21 +1,39 @@
 export type Riesgo = 'bajo' | 'medio' | 'alto';
 
-export function evaluarRiesgo(): { nivel: Riesgo; mensaje: string } {
-	const hora = new Date().getHours();
+export interface ResultadoRiesgo {
+	nivel: Riesgo;
+	mensaje: string;
+}
 
-	let nivel: Riesgo;
-	let mensaje: string;
+export function evaluarRiesgo(): ResultadoRiesgo {
+	try {
+		const hora: number = new Date().getHours();
 
-	if (hora >= 0 && hora < 5) {
-		nivel = 'alto';
-		mensaje = 'Es de madrugada. Te recomendamos evitar caminar solo y compartir tu ubicación.';
-	} else if (hora >= 5 && hora < 18) {
-		nivel = 'medio';
-		mensaje = 'Día activo. Mantente alerta a tu entorno.';
-	} else {
-		nivel = 'alto';
-		mensaje = 'Es de noche. Si te sientes inseguro, activa el modo de emergencia.';
+		if (isNaN(hora)) throw new Error('Hora inválida');
+
+		if (hora < 5) {
+			return {
+				nivel: 'alto',
+				mensaje: 'Es madrugada. Evita caminar solo y activa el modo seguro.'
+			};
+		}
+
+		if (hora < 18) {
+			return {
+				nivel: 'medio',
+				mensaje: 'Es de día. Mantente alerta en zonas desconocidas.'
+			};
+		}
+
+		return {
+			nivel: 'alto',
+			mensaje: 'Es de noche. Camina acompañado o usa la app en modo seguro.'
+		};
+	} catch (error) {
+		console.error('Error en evaluarRiesgo:', error);
+		return {
+			nivel: 'alto',
+			mensaje: 'No se pudo calcular el riesgo. Activa el modo seguro por precaución.'
+		};
 	}
-
-	return { nivel, mensaje };
 }

@@ -43,8 +43,5 @@
 		"ignoredBuiltDependencies": [
 			"@tailwindcss/oxide"
 		]
-	},
-	"dependencies": {
-		"aos": "^2.3.4"
 	}
 }

@@ -43,9 +43,5 @@
 		"ignoredBuiltDependencies": [
 			"@tailwindcss/oxide"
 		]
-	},
-	"dependencies": {
-		"aos": "^2.3.4",
-		"django": "^1.0.0"
 	}
 }

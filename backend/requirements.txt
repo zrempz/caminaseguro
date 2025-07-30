@@ -1,1 +1,7 @@
-Django==5.1.11
+django
+djangorestframework
+python-dotenv
+mongoengine
+pymongo
+PyJWT
+werkzeug

@@ -739,6 +739,10 @@ packages:
   devalue@5.1.1:
     resolution: {integrity: sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==}
 
+  django@1.0.0:
+    resolution: {integrity: sha512-PWiLJnnmf+Mghtm1J/YCZMQLM+N8rrz+bBgchOGM9ldJx9IlXM0D8h4u0vfCM85XafEbWAE8JyFbESykgiBhEw==}
+    deprecated: django is now django-express on request of the Django Software Foundation.
+
   enhanced-resolve@5.18.2:
     resolution: {integrity: sha512-6Jw4sE1maoRJo3q8MsSIn2onJFbLTOjY9hlx4DZXmOKvLRd1Ok2kXmAGXaafL2+ijsJZ1ClYbl/pmqr9+k4iUQ==}
     engines: {node: '>=10.13.0'}
@@ -1976,6 +1980,8 @@ snapshots:
   detect-libc@2.0.4: {}
 
   devalue@5.1.1: {}
+
+  django@1.0.0: {}
 
   enhanced-resolve@5.18.2:
     dependencies:

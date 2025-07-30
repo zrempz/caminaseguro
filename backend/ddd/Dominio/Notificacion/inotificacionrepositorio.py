@@ -1,14 +1,11 @@
 #-*- coding: utf-8 -*-
 
-from django.db import models
+from Modelo.notificacion import Notificacion
 
-class INotificacionRepositorio(models.Model):
-    class Meta:
-        pass
+class INotificacionRepositorio:
 
-    def guardar_notificacion(self, notificacion):
-        pass
+    def guardar_notificacion(self, notificacion: Notificacion):
+        raise NotImplementedError("guardar_notificacion")
 
     def marcar_como_enviada(self, notificacion_id):
-        pass
-
+        raise NotImplementedError("marcar_como_enviada")

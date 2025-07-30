@@ -1,6 +1,7 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from django.db import models
+
 
 class NotificacionServicio(models.Model):
     class Meta:
@@ -8,4 +9,3 @@ class NotificacionServicio(models.Model):
 
     def enviar_notificacion(self, registro_id):
         pass
-

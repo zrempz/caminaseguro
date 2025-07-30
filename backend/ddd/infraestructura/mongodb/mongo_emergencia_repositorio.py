@@ -2,7 +2,7 @@
 
 from django.db import models
 
-class RegistroEmergenciaServicioImpl(models.Model):
+class MongoContactoEmergenciaRepositorio(models.Model):
     class Meta:
         pass
 

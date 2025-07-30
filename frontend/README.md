@@ -1,38 +1,52 @@
-# sv
+# Frontend (SvelteKit)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Este directorio contiene la aplicación web del proyecto _**CaminaSeguro**_, construida con SvelteKit, TypeScript y Tailwind CSS.
 
-## Creating a project
+## Requisitos Previos
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Node.js 20.x o superior
+- `pnpm` (se puede instalar con `npm install -g pnpm`)
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Instalación y Configuración
 
-# create a new project in my-app
-npx sv create my-app
-```
+1. **Instalar las dependencias:**
 
-## Developing
+   ```bash
+   pnpm install
+   ```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+2. **Configurar las variables de entorno:**
+   - Crear una copia del archivo `.env.example` y renombrarlo a `.env`.
+   - Asegurarse de que la variable `BACKEND_API_BASE_URL` apunte a la URL donde se está ejecutando el backend (por defecto, `http://127.0.0.1:8000`).
 
-```bash
-npm run dev
+## Ejecución en Desarrollo
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+Para iniciar el servidor de desarrollo de SvelteKit, ejecutar:
 
 ```bash
-npm run build
+pnpm dev
 ```
 
-You can preview the production build with `npm run preview`.
+La aplicación estará disponible en `http://localhost:5173`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Construcción y Previsualización para Producción
+
+1. **Construir la Aplicación (Build)**
+
+   Este comando compila y optimiza todo el código (Svelte, TypeScript, CSS) en un conjunto de archivos eficientes y listos para producción.
+
+   ```bash
+   pnpm build
+   ```
+
+   El proceso generará una versión final de la aplicación dentro del directorio `.svelte-kit/output`.
+
+2. **Previsualizar la Aplicación (Preview)**
+
+   Una vez construida, se puede iniciar un servidor local que sirva los archivos de producción para verificar su comportamiento.
+
+   ```bash
+   pnpm preview
+   ```
+
+La aplicación estará disponible en la URL que indique la terminal (comúnmente `http://localhost:4173`).

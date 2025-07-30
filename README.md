@@ -44,10 +44,6 @@
 
 ---
 
-
-
-
-
 ## Funcionalidades y Prototipo (GUI)
 
 La aplicación ofrece un panel de control centralizado desde donde el usuario puede gestionar su seguridad de forma intuitiva.
@@ -96,12 +92,10 @@ El proyecto adopta una **Arquitectura por Capas** explícita, fuertemente influe
 El modelo de dominio se ha diseñado siguiendo los principios de DDD, separando las responsabilidades en módulos cohesivos como `usuarios` y `contacto_emergencia`.
 
 ![Diagrama de Clases del Modelo de Dominio](modelo_dominio.png)
-*<p align="center">Reemplaza esta URL con la imagen de tu modelo de dominio.</p>*
 
 ### Diagrama de Arquitectura
 
 ![Diagrama de Paquetes de la Arquitectura](modelo_dominio_extendido.png)
-*<p align="center">Reemplaza esta URL con la imagen de tu diagrama de arquitectura.</p>*
 
 ---
 

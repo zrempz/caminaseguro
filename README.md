@@ -75,7 +75,7 @@ La aplicación ofrece un panel de control centralizado desde donde el usuario pu
 
 A continuación se muestra una captura del panel principal del usuario, el centro de operaciones de la aplicación.
 
-![Panel de Usuario de CaminaSeguro](https://placehold.co/800x450/333/FFF?text=Panel+de+Usuario)
+![Panel de Usuario de CaminaSeguro](imagen1.jpeg)
 *<p align="center">Reemplaza esta URL con la captura de tu panel de usuario.</p>*
 
 ---
@@ -95,12 +95,12 @@ El proyecto adopta una **Arquitectura por Capas** explícita, fuertemente influe
 
 El modelo de dominio se ha diseñado siguiendo los principios de DDD, separando las responsabilidades en módulos cohesivos como `usuarios` y `contacto_emergencia`.
 
-![Diagrama de Clases del Modelo de Dominio](https://placehold.co/800x500/333/FFF?text=Diagrama+de+Dominio)
+![Diagrama de Clases del Modelo de Dominio](modelo_dominio.png)
 *<p align="center">Reemplaza esta URL con la imagen de tu modelo de dominio.</p>*
 
 ### Diagrama de Arquitectura
 
-![Diagrama de Paquetes de la Arquitectura](https://placehold.co/800x500/333/FFF?text=Diagrama+de+Arquitectura)
+![Diagrama de Paquetes de la Arquitectura](modelo_dominio_extendido.png)
 *<p align="center">Reemplaza esta URL con la imagen de tu diagrama de arquitectura.</p>*
 
 ---

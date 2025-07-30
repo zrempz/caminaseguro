@@ -105,17 +105,20 @@ El modelo de dominio se ha diseñado siguiendo los principios de DDD, separando 
 
 ---
 
-## 🛠️ Prácticas de Desarrollo Aplicadas
+## Prácticas de Desarrollo Aplicadas
 
 ### Estilos y Principios Aplicados
 
-- **DDD (Domain-Driven Design):** Se aplica el patrón Factory para encapsular la creación de la entidad `Usuario`.
-- **SOLID - SRP (Single Responsibility Principle):** La clase `UsuarioFabrica` tiene como única responsabilidad crear usuarios.
-- **Inyección de dependencias:** `ServicioHash` se inyecta a través del constructor para mantener el desacoplamiento.
-- **Clean Code / Separation of Concerns:** La lógica de hasheo está delegada a un componente específico.
-- **Estilo Cookbook:** El método `crear_usuario` define de forma clara y directa el proceso de construcción del objeto.
+Estilo orientado a objetos (Object-Oriented Programming, OOP)
+El diseño se basa en clases, encapsulación, responsabilidad única y composición.
 
-**Evidencia - JSDoc en Svelte (`/src/lib/components/ui/FormInput.svelte`):**
+Se encapsula la lógica de creación en una clase separada (UsuarioFabrica), en lugar de hacerlo directamente en la entidad.
+
+Estilo Cookbook
+El método crear_usuario(...) actúa como una receta clara y paso a paso para construir un objeto Usuario, asegurando que siempre se cree en un estado válido.
+
+Estilo basado en patrones de diseño
+Se implementa explícitamente el patrón Factory, usado comúnmente en DDD, para delegar y centralizar la creación de objetos con lógica adicional (como el hasheo de contraseñas).
 
 ```python
 # DDD: Implementación del patrón Factory para la creación de la entidad Usuario.
@@ -159,10 +162,15 @@ class UsuarioFabrica:
 ```
 
 
-- **DDD (Domain-Driven Design):** Se define una interfaz de repositorio (`UsuarioRepositorio`) para abstraer la persistencia de la entidad `Usuario`.
-- **SOLID - ISP (Interface Segregation Principle):** La interfaz expone solo las operaciones necesarias para la entidad.
-- **Abstracción:** Uso de clases abstractas para definir contratos claros entre capas (dominio e infraestructura).
-- **Clean Architecture:** Se desacopla el dominio de los detalles de implementación del almacenamiento.
+### Estilo de Programación Aplicado
+### Estilo por Interfaces (Interface-Based Programming)
+El archivo define una interfaz abstracta (UsuarioRepositorio) con métodos que actúan como un contrato para las operaciones de acceso a datos relacionadas con la entidad Usuario.
+Este estilo es característico de arquitecturas en capas como Clean Architecture o Hexagonal Architecture, donde se busca:
+Separar completamente el dominio del almacenamiento.
+Poder intercambiar fácilmente la implementación (por ejemplo, MongoDB, PostgreSQL, memoria, mocks).
+
+
+
 ```python
 from abc import ABC, abstractmethod
 from .modelo.usuario import Usuario

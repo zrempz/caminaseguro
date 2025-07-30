@@ -44,6 +44,10 @@
 
 ---
 
+
+
+
+
 ## Funcionalidades y Prototipo (GUI)
 
 La aplicación ofrece un panel de control centralizado desde donde el usuario puede gestionar su seguridad de forma intuitiva.
@@ -55,7 +59,19 @@ La aplicación ofrece un panel de control centralizado desde donde el usuario pu
 * **Visualización de ubicación:** Seguimiento en tiempo real en un mapa interactivo.
 * **Gestión de contactos de emergencia:** CRUD para la lista de contactos.
 
-### Prototipo / Interfaz Gráfica de Usuario (GUI)
+### Prototipo / Interfaz Gráfica de Usuario (GUI)### Tecnologías Utilizadas
+
+| Área             | Tecnología             | Propósito                                                  |
+|------------------|------------------------|-------------------------------------------------------------|
+| **Backend**      | Python                 | Lenguaje de programación principal.                         |
+|                  | Django                 | Framework para construir la API RESTful.                    |
+| **Frontend**     | Svelte                 | Framework para construir interfaces reactivas.              |
+|                  | HTML / CSS             | Lenguajes de marcado y estilo para el diseño de la interfaz.|
+|                  | JavaScript / TypeScript| Lenguajes de programación para el comportamiento y tipado.  |
+| **Base de Datos**| MongoDB                | Base de datos NoSQL orientada a documentos.                 |
+| **Herramientas** | Git / GitHub           | Sistema de control de versiones y repositorio.              |
+|                  | SonarQube              | Análisis estático de la calidad del código.                 |
+
 
 A continuación se muestra una captura del panel principal del usuario, el centro de operaciones de la aplicación.
 
@@ -91,34 +107,106 @@ El modelo de dominio se ha diseñado siguiendo los principios de DDD, separando 
 
 ## 🛠️ Prácticas de Desarrollo Aplicadas
 
-### Estilos de Programación y Convenciones de Codificación
+### Estilos y Principios Aplicados
 
-* **Python (Backend):** Se sigue estrictamente la guía de estilo **PEP 8**. Se utiliza `snake_case` para variables y funciones.
-* **TypeScript/Svelte (Frontend):** Se utiliza `camelCase` para variables y funciones. Los componentes Svelte se nombran con `PascalCase`.
-* **Documentación:** Se utiliza **JSDoc** en el frontend y **Docstrings** de Python en el backend para documentar el propósito de cada módulo, función y componente.
+- **DDD (Domain-Driven Design):** Se aplica el patrón Factory para encapsular la creación de la entidad `Usuario`.
+- **SOLID - SRP (Single Responsibility Principle):** La clase `UsuarioFabrica` tiene como única responsabilidad crear usuarios.
+- **Inyección de dependencias:** `ServicioHash` se inyecta a través del constructor para mantener el desacoplamiento.
+- **Clean Code / Separation of Concerns:** La lógica de hasheo está delegada a un componente específico.
+- **Estilo Cookbook:** El método `crear_usuario` define de forma clara y directa el proceso de construcción del objeto.
 
 **Evidencia - JSDoc en Svelte (`/src/lib/components/ui/FormInput.svelte`):**
 
-```html
-<script lang="ts">
-	/**
-	 * @prop {string} name - Atributo 'name' para el FormData.
-	 * @prop {string} label - Texto para el <label>.
-	 * @prop {string} value - Valor del campo, enlazable con `bind:value`.
-	 */
-	let {
-		name,
-		label,
-		value = $bindable(),
-		// ...
-	}: {
-		name: string;
-		label: string;
-		value: string;
-		// ...
-	} = $props();
-</script>
+```python
+# DDD: Implementación del patrón Factory para la creación de la entidad Usuario.
+# SOLID (SRP): La única responsabilidad de esta clase es crear instancias de Usuario.
+from .modelo.usuario import Usuario
+from ddd.infraestructura.servicios.servicio_hash import ServicioHash
+
+
+class UsuarioFabrica:
+    """
+    Fábrica responsable de la creación de instancias de la entidad Usuario.
+
+    Encapsula la lógica compleja de creación, como el hasheo de la contraseña,
+    asegurando que los objetos se creen en un estado válido y consistente.
+    Esto cumple con el patrón Factory de DDD.
+    """
+
+    def __init__(self, servicio_hash: ServicioHash):
+        """
+        Inicializa la fábrica con el servicio de hasheo.
+
+        Args:
+            servicio_hash (ServicioHash): El servicio para hashear contraseñas.
+        """
+        self._servicio_hash = servicio_hash
+
+    def crear_usuario(self, nombre: str, email: str, password_plano: str) -> Usuario:
+        """
+        Crea una nueva instancia de Usuario, asegurando que la contraseña se hashee.
+
+        Args:
+            nombre (str): Nombre del usuario.
+            email (str): Email del usuario.
+            password_plano (str): Contraseña en texto plano.
+
+        Returns:
+            Usuario: Una nueva instancia de la entidad Usuario con la contraseña hasheada.
+        """
+        password_hasheado = self._servicio_hash.hash_password(password_plano)
+        return Usuario(nombre=nombre, email=email, password=password_hasheado)
 ```
+
+
+- **DDD (Domain-Driven Design):** Se define una interfaz de repositorio (`UsuarioRepositorio`) para abstraer la persistencia de la entidad `Usuario`.
+- **SOLID - ISP (Interface Segregation Principle):** La interfaz expone solo las operaciones necesarias para la entidad.
+- **Abstracción:** Uso de clases abstractas para definir contratos claros entre capas (dominio e infraestructura).
+- **Clean Architecture:** Se desacopla el dominio de los detalles de implementación del almacenamiento.
+```python
+from abc import ABC, abstractmethod
+from .modelo.usuario import Usuario
+
+
+class UsuarioRepositorio(ABC):
+    """
+    Interfaz que define las operaciones de persistencia para la entidad Usuario.
+
+    Actúa como un contrato que la capa de infraestructura debe implementar,
+    desacoplando el dominio de los detalles de la base de datos.
+    """
+
+    @abstractmethod
+    def guardar(self, usuario: Usuario) -> Usuario:
+        """Guarda o actualiza una entidad de Usuario en el repositorio."""
+        pass
+
+    @abstractmethod
+    def buscar_por_email(self, email: str) -> Usuario | None:
+        """Busca un usuario por su dirección de email."""
+        pass
+
+    @abstractmethod
+    def existe_email(self, email: str) -> bool:
+        """Verifica si ya existe un usuario con un email determinado."""
+        pass
+
+    @abstractmethod
+    def buscar_por_id(self, usuario_id: str) -> Usuario | None:
+        """Busca un usuario por su ID único."""
+        pass
+```
+
+
+
+
+
+
+
+
+
+
+
 
 ### Codificación Limpia (Clean Code)
 

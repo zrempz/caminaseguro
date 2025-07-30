@@ -29,12 +29,12 @@
 
 ## Equipo de Trabajo
 
-| Integrante:
+Integrante:
 
-| Montañez Pacco, Roni Ezequiel
-| Coloma Yujra, Riki Santher
-| Enao Vilca, Roberto Carlos
-| Taipe Huanca, Cristhian Luis
+* Montañez Pacco, Roni Ezequiel
+* Coloma Yujra, Riki Santher
+* Enao Vilca, Roberto Carlos
+* Taipe Huanca, Cristhian Luis
 
 ---
 
@@ -76,7 +76,7 @@ A continuación se muestra una captura del panel principal del usuario, el centr
 
 ---
 
-## 🏗️ Visión General de Arquitectura
+## Visión General de Arquitectura
 
 El proyecto adopta una **Arquitectura por Capas** explícita, fuertemente influenciada por los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**. Esta separación garantiza un bajo acoplamiento y una alta cohesión, facilitando la mantenibilidad y la escalabilidad del sistema.
 
@@ -351,7 +351,7 @@ class UsuarioRepositorio(ABC):
 
 ---
 
-## 📈 Gestión de Proyecto (Trello)
+## Gestión de Proyecto (Trello)
 
 La planificación y el seguimiento del proyecto se gestionan mediante un tablero Kanban en Trello, donde se definen y asignan las historias de usuario, tareas técnicas, mejoras y correcciones.
 

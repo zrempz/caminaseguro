@@ -1,23 +1,31 @@
-#-*- coding: utf-8 -*-
+from abc import ABC, abstractmethod
+from .modelo.usuario import Usuario
 
-from django.db import models
 
-class UsuarioRepositorio(models.Model):
-    class Meta:
-        abstract = True
+class UsuarioRepositorio(ABC):
+    """
+    Interfaz que define las operaciones de persistencia para la entidad Usuario.
 
-    def guardar(self, usuario):
+    Actúa como un contrato que la capa de infraestructura debe implementar,
+    desacoplando el dominio de los detalles de la base de datos.
+    """
+
+    @abstractmethod
+    def guardar(self, usuario: Usuario) -> Usuario:
+        """Guarda o actualiza una entidad de Usuario en el repositorio."""
         pass
 
-    def eliminar(self, usuario_id):
+    @abstractmethod
+    def buscar_por_email(self, email: str) -> Usuario | None:
+        """Busca un usuario por su dirección de email."""
         pass
 
-    def buscar_por_id(self, usuario_id):
+    @abstractmethod
+    def existe_email(self, email: str) -> bool:
+        """Verifica si ya existe un usuario con un email determinado."""
         pass
 
-    def buscar_todos(self, ):
+    @abstractmethod
+    def buscar_por_id(self, usuario_id: str) -> Usuario | None:
+        """Busca un usuario por su ID único."""
         pass
-
-    def buscar_por_email(self, email):
-        pass
-

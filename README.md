@@ -358,5 +358,4 @@ La planificación y el seguimiento del proyecto se gestionan mediante un tablero
 * **URL del Tablero:** [Enlace a tu tablero de Trello aquí](https://trello.com/)
 * **Captura de Pantalla:**
 
-    ![Tablero de Trello](https://placehold.co/800x450/0079BF/FFF?text=Tablero+Trello)
-    *<p align="center">Reemplaza esta URL con la captura de tu tablero.</p>*
+    ![Tablero de Trello]([https://placehold.co/800x450/0079BF/FFF?text=Tablero+Trello](https://trello.com/b/nhe93oQC/sistema-de-acompanamiento-virtual))

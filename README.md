@@ -1,4 +1,6 @@
-# Proyecto Final: CaminaSeguro
+<div align="center">
+  <img src="imagenes/logo.png" alt="CaminaSeguro Logo" width="100%"; height: auto">
+</div>
 
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
@@ -6,100 +8,159 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
-"CaminaSeguro" es una aplicación web de seguridad personal diseñada para ofrecer tranquilidad a las personas durante sus trayectos diarios. Su propósito es proveer un sistema de acompañamiento virtual que permite a los usuarios activar una alerta en tiempo real, notificando a sus contactos de confianza y compartiendo su ubicación para facilitar una respuesta rápida en situaciones de riesgo.
+---
+
+## Índice
+
+- [Integrantes](#integrantes)
+- [Guía de Instalación](#instalacion)
+- [Funcionalidades y Prototipo](#gui)
+  - [Functionalidades de alto nivel](#funcionalidades)
+  - [Diagrama de casos de uso](#casos-de-uso)
+  - [Prototipo](#prototipo)
+- [Visión General de Arquitectura](#arquitectura)
+  - [Modelo de Dominio](#modelo-de-dominio)
+  - [Diagrama de Arquitectura](#diagrama-de-arquitectura)
+- [Prácticas de Desarrollo Aplicadas](#practicas)
+  - [Estilos y Convenciones de Codificación](#estilos)
+    - [Estilo Cookbook](#estilo-cookbook)
+    - [Estilo por Interfaces](#estilo-interfaces)
+  - [Codificación Limpia (Clean Code)](#clean-code)
+  - [Principios SOLID](#principios-solid)
+    - [Principio de Responsabilidad Unica](#principo-srp)
+    - [Principio de Abierto/Cerrado](#principo-ocp)
+    - [Principio de Inversión de Dependencias](#principo-dip)
+  - [Domain-Driven Design (DDD)](#domain-driven-design)
 
 ---
 
-## Tabla de Contenidos
+<div id="integrantes">
 
-1.  [Equipo de Trabajo](#-equipo-de-trabajo)
-2.  [Propósito del Proyecto](#-propósito-del-proyecto)
-3.  [Funcionalidades y Prototipo](#-funcionalidades-y-prototipo-gui)
-4.  [Visión General de Arquitectura](#-visión-general-de-arquitectura)
-    * [Modelo de Dominio](#modelo-de-dominio)
-    * [Diagrama de Arquitectura](#diagrama-de-arquitectura)
-5.  [Prácticas de Desarrollo Aplicadas](#-prácticas-de-desarrollo-aplicadas)
-    * [Estilos y Convenciones de Codificación](#estilos-de-programación-y-convenciones-de-codificación)
-    * [Codificación Limpia (Clean Code)](#codificación-limpia-clean-code)
-    * [Principios SOLID](#principios-solid)
-    * [Domain-Driven Design (DDD)](#domain-driven-design-ddd)
-6.  [Gestión de Proyecto (Trello)](#-gestión-de-proyecto-trello)
+## Integrantes
+
+- Montañez Pacco, Roni Ezequiel
+- Coloma Yujra, Riki Santher
+- Enao Vilca, Roberto Carlos
+- Taipe Huanca, Cristhian Luis
+</div>
 
 ---
 
-## Equipo de Trabajo
+<div id="instalacion">
 
-Integrante:
+## Guía de Instalación
 
-* Montañez Pacco, Roni Ezequiel
-* Coloma Yujra, Riki Santher
-* Enao Vilca, Roberto Carlos
-* Taipe Huanca, Cristhian Luis
+Para instalar este proyecto, por favor, sigue la guía correspondiente:
 
----
+- [Guía de Instalación del backend](./backend/README.md)
+- [Guía de Instalación del frontend](./frontend/README.md)
 
-## Propósito del Proyecto
-
-"CaminaSeguro" es una aplicación web de seguridad personal diseñada para ofrecer tranquilidad a las personas durante sus trayectos diarios. Su propósito es proveer un sistema de acompañamiento virtual que permite a los usuarios activar una alerta en tiempo real, notificando a sus contactos de confianza y compartiendo su ubicación para facilitar una respuesta rápida en situaciones de riesgo.
+</div>
 
 ---
 
+<div id="proposito">
+
+## Propósito del proyecto
+
+**"CaminaSeguro"** es una aplicación web de seguridad personal diseñada para ofrecer tranquilidad a las personas durante sus trayectos diarios. Su propósito es proveer un sistema de acompañamiento virtual que permite a los usuarios activar una alerta en tiempo real, notificando a sus contactos de confianza y compartiendo su ubicación para facilitar una respuesta rápida en situaciones de riesgo.
+
+</div>
+
+<div id="gui">
 ## Funcionalidades y Prototipo (GUI)
 
 La aplicación ofrece un panel de control centralizado desde donde el usuario puede gestionar su seguridad de forma intuitiva.
 
+<div id="funcionalidades">
+
 ### Funcionalidades de Alto Nivel
 
-* **Gestión de cuenta de usuario:** Registro, Inicio y Cierre de Sesión.
-* **Activación de alerta de emergencia:** Notificación instantánea a contactos de confianza.
-* **Visualización de ubicación:** Seguimiento en tiempo real en un mapa interactivo.
-* **Gestión de contactos de emergencia:** CRUD para la lista de contactos.
+- **Gestión de cuenta de usuario:** Registro, Inicio y Cierre de Sesión.
+- **Activación de alerta de emergencia:** Notificación instantánea a contactos de confianza.
+- **Visualización de ubicación:** Seguimiento en tiempo real en un mapa interactivo.
+- **Gestión de contactos de emergencia:** CRUD para la lista de contactos.
+</div>
 
-### Prototipo / Interfaz Gráfica de Usuario (GUI)### Tecnologías Utilizadas
+<div id="casos-de-uso">
 
-| Área             | Tecnología             | Propósito                                                  |
-|------------------|------------------------|-------------------------------------------------------------|
-| **Backend**      | Python                 | Lenguaje de programación principal.                         |
-|                  | Django                 | Framework para construir la API RESTful.                    |
-| **Frontend**     | Svelte                 | Framework para construir interfaces reactivas.              |
-|                  | HTML / CSS             | Lenguajes de marcado y estilo para el diseño de la interfaz.|
-|                  | JavaScript / TypeScript| Lenguajes de programación para el comportamiento y tipado.  |
-| **Base de Datos**| MongoDB                | Base de datos NoSQL orientada a documentos.                 |
-| **Herramientas** | Git / GitHub           | Sistema de control de versiones y repositorio.              |
-|                  | SonarQube              | Análisis estático de la calidad del código.                 |
+### Diagrama de casos de uso
 
+<figure style="text-align: center;">
+  <img src="diagramas/diagrama_casos_de_uso.png" alt="Diagrama de casos de uso" >
+  <figcaption>Diagrama de casos de uso</figcaption>
+</figure>
+</div>
 
-A continuación se muestra una captura del panel principal del usuario, el centro de operaciones de la aplicación.
+<div id="prototipo">
 
-![Panel de Usuario de CaminaSeguro](imagen1.jpeg)
-*<p align="center">Reemplaza esta URL con la captura de tu panel de usuario.</p>*
+### Prototipo / Interfaz Gráfica de Usuario (GUI)
+
+**Tecnologías Utilizadas**
+
+| Área              | Tecnología              | Propósito                                                    |
+| ----------------- | ----------------------- | ------------------------------------------------------------ |
+| **Backend**       | Python                  | Lenguaje de programación principal.                          |
+|                   | Django                  | Framework para construir la API RESTful.                     |
+| **Frontend**      | Svelte                  | Framework para construir interfaces reactivas.               |
+|                   | HTML / CSS              | Lenguajes de marcado y estilo para el diseño de la interfaz. |
+|                   | JavaScript / TypeScript | Lenguajes de programación para el comportamiento y tipado.   |
+| **Base de Datos** | MongoDB                 | Base de datos NoSQL orientada a documentos.                  |
+| **Herramientas**  | Git / GitHub            | Sistema de control de versiones y repositorio.               |
+|                   | SonarQube               | Análisis estático de la calidad del código.                  |
+
+A continuación se muestran capturas de pantalla de la interfaz gráfica del usuario:
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+  <img src="imagenes/home.png" alt="Home page" style="width: 300px; height: auto;">
+  <img src="imagenes/login.png" alt="Login page" style="width: 300px; height: auto;">
+  <img src="imagenes/boton.png" alt="Button page" style="width: 300px; height: auto;">
+  <img src="imagenes/map.png" alt="Map page" style="width: 300px; height: auto;">
+  </div>
+
+</div>
+</div>
 
 ---
+
+<div id="arquitectura">
 
 ## Visión General de Arquitectura
 
 El proyecto adopta una **Arquitectura por Capas** explícita, fuertemente influenciada por los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**. Esta separación garantiza un bajo acoplamiento y una alta cohesión, facilitando la mantenibilidad y la escalabilidad del sistema.
 
-* **Frontend (SvelteKit):** Sigue una arquitectura de componentes, donde la UI se divide en piezas reutilizables y con responsabilidades únicas.
-* **Backend (Python/Django):** Implementa un estilo arquitectónico en 4 capas distintas:
-    1.  **Presentación:** Controladores que manejan las peticiones HTTP.
-    2.  **Aplicación:** Servicios que orquestan los casos de uso.
-    3.  **Dominio:** Lógica de negocio pura (Entidades, Repositorios, etc.).
-    4.  **Infraestructura:** Detalles técnicos como la conexión a la base de datos (MongoDB) y servicios externos.
+- **Frontend (SvelteKit):** Sigue una arquitectura de componentes, donde la UI se divide en piezas reutilizables y con responsabilidades únicas.
+- **Backend (Python/Django):** Implementa un estilo arquitectónico en 4 capas distintas:
+  - **Presentación:** Controladores que manejan las peticiones HTTP.
+  - **Aplicación:** Servicios que orquestan los casos de uso.
+  - **Dominio:** Lógica de negocio pura (Entidades, Repositorios, etc.).
+  - **Infraestructura:** Detalles técnicos como la conexión a la base de datos (MongoDB) y servicios externos.
+
+<div id="modelo-de-dominio">
 
 ### Modelo de Dominio
 
 El modelo de dominio se ha diseñado siguiendo los principios de DDD, separando las responsabilidades en módulos cohesivos como `usuarios` y `contacto_emergencia`.
 
-![Diagrama de Clases del Modelo de Dominio](modelo_dominio.png)
+![Diagrama de Clases del Modelo de Dominio](diagramas/modelo_dominio.png)
+
+</div>
+<div id="diagrama-de-arquitectura">
 
 ### Diagrama de Arquitectura
 
-![Diagrama de Paquetes de la Arquitectura](modelo_dominio_extendido.png)
+![Diagrama de Paquetes de la Arquitectura](diagramas/modelo_dominio_extendido.png)
+
+</div>
+</div>
 
 ---
 
+<div id="practicas">
+
 ## Prácticas de Desarrollo Aplicadas
+
+<div id="estilos">
 
 ### Estilos y Principios Aplicados
 
@@ -108,7 +169,10 @@ El diseño se basa en clases, encapsulación, responsabilidad única y composici
 
 Se encapsula la lógica de creación en una clase separada (UsuarioFabrica), en lugar de hacerlo directamente en la entidad.
 
-Estilo Cookbook
+<div id="estilo-cookbook">
+
+#### Estilo Cookbook
+
 El método crear_usuario(...) actúa como una receta clara y paso a paso para construir un objeto Usuario, asegurando que siempre se cree en un estado válido.
 
 Estilo basado en patrones de diseño
@@ -155,15 +219,16 @@ class UsuarioFabrica:
         return Usuario(nombre=nombre, email=email, password=password_hasheado)
 ```
 
+</div>
 
-### Estilo de Programación Aplicado
-### Estilo por Interfaces (Interface-Based Programming)
+<div id="estilo-interfaces">
+
+#### Estilo por Interfaces (Interface-Based Programming)
+
 El archivo define una interfaz abstracta (UsuarioRepositorio) con métodos que actúan como un contrato para las operaciones de acceso a datos relacionadas con la entidad Usuario.
 Este estilo es característico de arquitecturas en capas como Clean Architecture o Hexagonal Architecture, donde se busca:
 Separar completamente el dominio del almacenamiento.
 Poder intercambiar fácilmente la implementación (por ejemplo, MongoDB, PostgreSQL, memoria, mocks).
-
-
 
 ```python
 from abc import ABC, abstractmethod
@@ -199,163 +264,178 @@ class UsuarioRepositorio(ABC):
         pass
 ```
 
+</div>
 
+</div>
 
-
-
-
-
-
-
-
-
+<div id="clean-code">
 
 ### Codificación Limpia (Clean Code)
 
-* **Nombres Expresivos:** Las variables y funciones tienen nombres que revelan su intención, como `evaluarRiesgo` o `ESTILOS_RIESGO`, lo que hace el código autoexplicativo.
+- **Nombres Expresivos:** Las variables y funciones tienen nombres que revelan su intención, como `evaluarRiesgo` o `ESTILOS_RIESGO`, lo que hace el código autoexplicativo.
 
-    *Evidencia (`/src/lib/services/riesgo.ts`):*
-    ```typescript
-    export function evaluarRiesgo(): { nivel: Riesgo; mensaje: string } {
-        const hora = new Date().getHours();
-        // ...
+  _Evidencia [riesgo.ts](frontend/src/lib/services/riesgo.ts):_
+
+  ```typescript
+  export function evaluarRiesgo(): { nivel: Riesgo; mensaje: string } {
+    const hora = new Date().getHours();
+    // ...
+  }
+  ```
+
+- **Funciones Pequeñas y con una Sola Responsabilidad:** Funciones como `autenticarUsuario` tienen un único propósito, en este caso, comunicarse con el endpoint de login del backend.
+
+  _Evidencia [+page.server.ts](frontend/src/routes/iniciar-sesion/+page.server.ts):_
+
+  ```typescript
+  async function autenticarUsuario(
+    datos: z.infer<typeof esquemaLogin>,
+  ): Promise<string> {
+    const response = await fetch(`${BACKEND_API_BASE_URL}/api/auth/login/`, {
+      // ...
+    });
+
+    if (!response.ok) {
+      throw new Error("El correo o la contraseña son incorrectos.");
     }
-    ```
 
-* **Funciones Pequeñas y con una Sola Responsabilidad:** Funciones como `autenticarUsuario` tienen un único propósito, en este caso, comunicarse con el endpoint de login del backend.
+    const { token } = await response.json();
+    return token;
+  }
+  ```
 
-    *Evidencia (`/src/routes/iniciar-sesion/+page.server.ts`):*
-    ```typescript
-    async function autenticarUsuario(datos: z.infer<typeof esquemaLogin>): Promise<string> {
-        const response = await fetch(`${BACKEND_API_BASE_URL}/api/auth/login/`, {
-            // ...
-        });
+- **Separación de Configuración y Lógica (DRY):** Los datos estáticos, como los enlaces del footer, se centralizan en archivos de configuración para evitar la duplicación.
 
-        if (!response.ok) {
-            throw new Error('El correo o la contraseña son incorrectos.');
-        }
+  _Evidencia [footer.ts](frontend/src/lib/config/footer.ts):_
 
-        const { token } = await response.json();
-        return token;
-    }
-    ```
+  ```typescript
+  export const exploreLinks: FooterLink[] = [
+    { href: "/features", text: "Características" },
+    { href: "/about", text: "Sobre Nosotros" },
+    { href: "/contact", text: "Contacto" },
+  ];
+  ```
 
-* **Separación de Configuración y Lógica (DRY):** Los datos estáticos, como los enlaces del footer, se centralizan en archivos de configuración para evitar la duplicación.
+</div>
 
-    *Evidencia (`/src/lib/config/footer.ts`):*
-    ```typescript
-    export const exploreLinks: FooterLink[] = [
-        { href: '/features', text: 'Características' },
-        { href: '/about', text: 'Sobre Nosotros' },
-        { href: '/contact', text: 'Contacto' }
-    ];
-    ```
+<div id="principios-solid">
 
 ### Principios SOLID
 
-* **Principio de Responsabilidad Única (SRP):** Cada componente y módulo tiene una única razón para cambiar. `UserActions.svelte` solo se ocupa de renderizar los botones de acción del panel.
+<div id="principo-srp">
 
-    *Evidencia (`/src/routes/panel/UserActions.svelte`):*
-    ```html
-    <script lang="ts">
-        /**
-         * @description SOLID (SRP): Su única responsabilidad es mostrar botones de acción
-         * como "Editar Perfil" y "Cerrar Sesión".
-         */
-        import { Edit, LogOut } from 'lucide-svelte';
-    </script>
-    
-    <div class="rounded-2xl bg-white p-6 shadow-lg sm:p-8 dark:bg-gray-800">
-        <!-- ... -->
-    </div>
-    ```
+- **Principio de Responsabilidad Única (SRP):** Cada componente y módulo tiene una única razón para cambiar. `UserActions.svelte` solo se ocupa de renderizar los botones de acción del panel.
 
-* **Principio de Abierto/Cerrado (OCP):** Los componentes están abiertos a la extensión pero cerrados a la modificación. `Card.svelte` puede renderizar cualquier contenido en su cabecera y cuerpo a través de *snippets* (slots), sin necesidad de modificar su código interno.
+  _Evidencia [UserActions.svelte](frontend/src/routes/panel/UserActions.svelte):_
 
-    *Evidencia (`/src/lib/components/ui/Card.svelte`):*
-    ```html
-    <script lang="ts">
-        let {
-            children,
-            header,
-            class: extraClasses = ''
-        }: {
-            children: Snippet;
-            header?: Snippet;
-            class?: string;
-        } = $props();
-    </script>
-    
-    <div class="flex w-full ... {extraClasses}">
-        {#if header}
-            {@render header()}
-        {/if}
-        <div class="mt-8 flex-grow">
-            {@render children()}
-        </div>
-    </div>
-    ```
+  ```html
+  <script lang="ts">
+    /**
+     * @description SOLID (SRP): Su única responsabilidad es mostrar botones de acción
+     * como "Editar Perfil" y "Cerrar Sesión".
+     */
+    import { Edit, LogOut } from "lucide-svelte";
+  </script>
 
-* **Principio de Inversión de Dependencias (DIP):** Los módulos de alto nivel no dependen de los de bajo nivel, sino de abstracciones. `UsuarioServicioImpl` depende de la interfaz `UsuarioRepositorio`, no de la implementación concreta de MongoDB.
+  <div class="rounded-2xl bg-white p-6 shadow-lg sm:p-8 dark:bg-gray-800">
+    <!-- ... -->
+  </div>
+  ```
 
-    *Evidencia - Servicio de Aplicación (`/backend/ddd/aplicacion/usuario_servicio_impl.py`):*
-    ```python
-    class UsuarioServicioImpl(UsuarioServicio):
-        def __init__(
-            self,
-            usuario_repositorio: UsuarioRepositorio,
-            # ...
-        ):
-            self.usuario_repositorio = usuario_repositorio
-            # ...
-    ```
+  </div>
+
+<div id="principo-ocp">
+
+- **Principio de Abierto/Cerrado (OCP):** Los componentes están abiertos a la extensión pero cerrados a la modificación. `Card.svelte` puede renderizar cualquier contenido en su cabecera y cuerpo a través de _snippets_ (slots), sin necesidad de modificar su código interno.
+
+  _Evidencia [Card.Svelte](frontend/src/lib/components/ui/Card.svelte):_
+
+  ```html
+  <script lang="ts">
+    let {
+      children,
+      header,
+      class: extraClasses = "",
+    }: {
+      children: Snippet;
+      header?: Snippet;
+      class?: string;
+    } = $props();
+  </script>
+
+  <div class="flex w-full ... {extraClasses}">
+    {#if header} {@render header()} {/if}
+    <div class="mt-8 flex-grow">{@render children()}</div>
+  </div>
+  ```
+
+  </div>
+
+<div id="principo-dip">
+
+- **Principio de Inversión de Dependencias (DIP):** Los módulos de alto nivel no dependen de los de bajo nivel, sino de abstracciones. `UsuarioServicioImpl` depende de la interfaz `UsuarioRepositorio`, no de la implementación concreta de MongoDB.
+
+  _Evidencia [usuario_servicio_impl.py](backend/ddd/aplicacion/usuario_servicio_impl.py):_
+
+  ```python
+  class UsuarioServicioImpl(UsuarioServicio):
+      def __init__(
+          self,
+          usuario_repositorio: UsuarioRepositorio,
+          # ...
+      ):
+          self.usuario_repositorio = usuario_repositorio
+          # ...
+  ```
+
+</div>
+
+</div>
+
+<div id="domain-driven-design">
 
 ### Domain-Driven Design (DDD)
 
-* **Entidades:** Objetos con identidad propia. `Usuario` es una entidad principal.
+- **Entidades:** Objetos con identidad propia. `Usuario` es una entidad principal.
 
-    *Evidencia (`/backend/ddd/dominio/usuarios/modelo/usuario.py`):*
-    ```python
-    from mongoengine import Document, StringField, UUIDField
-    from uuid import uuid4
+  _Evidencia [usuario.py](backend/ddd/dominio/usuarios/modelo/usuario.py):_
 
-    class Usuario(Document):
-        id = UUIDField(primary_key=True, default=uuid4)
-        nombre = StringField(required=True, max_length=150)
-        # ...
-    ```
+  ```python
+  from mongoengine import Document, StringField, UUIDField
+  from uuid import uuid4
 
-* **Fábricas:** Encapsulan la lógica de creación de objetos complejos. `UsuarioFabrica` se encarga de crear usuarios con contraseñas hasheadas.
+  class Usuario(Document):
+      id = UUIDField(primary_key=True, default=uuid4)
+      nombre = StringField(required=True, max_length=150)
+      # ...
+  ```
 
-    *Evidencia (`/backend/ddd/dominio/usuarios/usuario_fabrica.py`):*
-    ```python
-    class UsuarioFabrica:
-        def crear_usuario(self, nombre: str, email: str, password_plano: str) -> Usuario:
-            password_hasheado = self._servicio_hash.hash_password(password_plano)
-            return Usuario(nombre=nombre, email=email, password=password_hasheado)
-    ```
+- **Fábricas:** Encapsulan la lógica de creación de objetos complejos. `UsuarioFabrica` se encarga de crear usuarios con contraseñas hasheadas.
 
-* **Repositorios:** Abstraen la lógica de persistencia. La interfaz `UsuarioRepositorio` se define en el dominio, y la implementación `MongoUsuarioRepositorio` en la infraestructura.
+  _Evidencia [usuario_fabrica.py](backend/ddd/dominio/usuarios/usuario_fabrica.py):_
 
-    *Evidencia - Interfaz (`/backend/ddd/dominio/usuarios/usuario_repositorio.py`):*
-    ```python
-    from abc import ABC, abstractmethod
+  ```python
+  class UsuarioFabrica:
+      def crear_usuario(self, nombre: str, email: str, password_plano: str) -> Usuario:
+          password_hasheado = self._servicio_hash.hash_password(password_plano)
+          return Usuario(nombre=nombre, email=email, password=password_hasheado)
+  ```
 
-    class UsuarioRepositorio(ABC):
-        @abstractmethod
-        def guardar(self, usuario: Usuario) -> Usuario:
-            pass
-    ```
+- **Repositorios:** Abstraen la lógica de persistencia. La interfaz `UsuarioRepositorio` se define en el dominio, y la implementación `MongoUsuarioRepositorio` en la infraestructura.
 
-* **Arquitectura en Capas:** El backend está claramente dividido en capas `presentacion`, `aplicacion`, `dominio` e `infraestructura`, como se evidencia en la estructura de directorios del proyecto.
+  _Evidencia [usuario_repositorio.py](backend/ddd/dominio/usuarios/usuario_repositorio.py):_
 
----
+  ```python
+  from abc import ABC, abstractmethod
 
-## Gestión de Proyecto (Trello)
+  class UsuarioRepositorio(ABC):
+      @abstractmethod
+      def guardar(self, usuario: Usuario) -> Usuario:
+          pass
+  ```
 
-La planificación y el seguimiento del proyecto se gestionan mediante un tablero Kanban en Trello, donde se definen y asignan las historias de usuario, tareas técnicas, mejoras y correcciones.
+- **Arquitectura en Capas:** El backend está claramente dividido en capas `presentacion`, `aplicacion`, `dominio` e `infraestructura`, como se evidencia en la estructura de directorios del proyecto.
 
-* **URL del Tablero:** [Enlace a tu tablero de Trello aquí](https://trello.com/)
-* **Captura de Pantalla:**
+</div>
 
-    ![Tablero de Trello]([https://placehold.co/800x450/0079BF/FFF?text=Tablero+Trello](https://trello.com/b/nhe93oQC/sistema-de-acompanamiento-virtual))
+</div>

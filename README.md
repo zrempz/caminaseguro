@@ -38,10 +38,10 @@
 
 ## Integrantes
 
-- Montañez Pacco, Roni Ezequiel
-- Coloma Yujra, Riki Santher
-- Enao Vilca, Roberto Carlos
-- Taipe Huanca, Cristhian Luis
+- Montañez Pacco, Roni Ezequiel _(zrempz, wh3pp)_
+- Coloma Yujra, Riki Santher _(Santherss)_
+- Enao Vilca, Roberto Carlos _(rcenaov)_
+- Taipe Huanca, Cristhian Luis _(Cristhianepcc)_
 </div>
 
 ---

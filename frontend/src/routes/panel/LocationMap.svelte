@@ -44,7 +44,7 @@
 	});
 </script>
 
-<Card class="w-full h-full">
+<Card class="h-full w-full">
 	{#snippet header()}
 		<div class="flex items-center justify-center gap-3">
 			<MapPin class="h-6 w-6 text-blue-600 dark:text-blue-400" />
